@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NLC Master Login Page</title>
+    <style>
+        body{
+            text-align: center;
+            background-color: white;
+        }
+        #pinForm input:focus,
+        #pingForm select:focus,
+        #pinForm textarea:focus,
+        #pinForm button:focus{
+            outline: none;
+        }
+        #pinForm{
+            width: 25%;
+            height:75%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -15%;
+            margin-top: -20%;
+            border: 2px solid #4169e1;
+            -webkit-box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            -moz-box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            border-radius:12px;
+        }
+
+        #buttonDiv{
+            display: none;
+        }
+
+        .pwInput{
+            width: 50%;
+            height: 6%;
+            font-size: 5em;
+            text-align:center;
+            border: 1px solid #D5DBDB;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+
+        .pinButton{
+            background-color: white;
+            color: black;
+            border: none;
+            -webkit-box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            -moz-box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            border-radius: 50%;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            margin: 7px;
+        }
+
+        .clear, .enter {
+            font-size: 1em;
+        }
+        .pinButton:hover {
+            box-shadow: #4169E1 0 0 1px 1px;
+        }
+        .pinButton:active {
+            background: #4169E1;
+            color: #fff;
+        }
+        .clear:hover {
+            box-shadow: #ff3c41 0 0 1px 1px;
+        }
+        .clear:active {
+            background: #ff3c41;
+            color: #fff;
+        }
+        .enter:hover {
+            box-shadow: #47cf73 0 0 1px 1px;
+        }
+        .enter:active {
+            background: #47cf73;
+            color: #fff;
+        }
+        .shadow{
+            -webkit-box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            -moz-box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+            box-shadow: 0px 5px 5px -0px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            background-color: #4169E1;
+            border: 2px solid #4169E1;
+            border-radius:7px 7px 0px 0px;
+            color: white;
+            margin: 0;
+        }
+
+        h2{
+            background-color: #4169E1;
+            border-bottom-radius: 10px;
+            color: white;
+            margin: 0;
+        }
+        h3{
+            margin:0;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function addNumber(e){
+            if(document.getElementById("pinInput").value.length < 4) {
+                var x = document.getElementById("pinInput").value;
+                document.getElementById("pinInput").value = x + e.value;
+            }
+        }
+
+        function clearForm(){
+            document.getElementById("pinInput").value = "";
+            document.getElementById("pinInput").focus();
+
+        }
+
+        window.onload = function() {
+            var input = document.getElementById("pinInput").focus();
+        };
+
+        function showHide(id){
+            var e = document.getElementById(id);
+            e.style.display = (e.style.display == 'block') ? 'none' : 'block';
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+
+<img src="<c:url value='/resources/ImgPitSide.png'/>"/>
+<div id="Pin">
+    <form id="pinForm" autocomplete="off" draggable="true">
+        <h1 align="center">NLC Master Login</h1>
+        <h2 align="center">Pin-Eingabe</h2>
+        <br>
+        <h3>Pin:</h3>
+        <input type="password" id="pinInput" class="pwInput" name="pinInput" value="" pattern="[0-9]{4}" maxlength="4" style="border-radius: 10px">
+        <br>
+        <img src="https://lh3.googleusercontent.com/2tU-VbapBWuhn25neVTscAKPGlDgf8yutkBalr9JZX-3HyBO2DVn_sDB0bix8x9xg1JYybo=s85" class="pinButton" onclick="showHide('buttonDiv')">
+        <br>
+        <h3>Pin merken: </h3>
+        <input type="checkbox"  name="remember" value="true" height="20px" width="20px">
+        <br>
+        <br>
+        <div id="buttonDiv">
+            <input type="button" class="pinButton" name="1" value="1" id="1" onclick="addNumber(this)"/>
+            <input type="button" class="pinButton" name="2" value="2" id="2" onclick="addNumber(this)"/>
+            <input type="button" class="pinButton" name="3" value="3" id="3" onclick="addNumber(this)"/>
+            <br>
+            <input type="button" class="pinButton" name="4" value="4" id="4" onclick="addNumber(this)"/>
+            <input type="button" class="pinButton" name="5" value="5" id="5" onclick="addNumber(this)"/>
+            <input type="button" class="pinButton" name="6" value="6" id="6" onclick="addNumber(this)"/>
+            <br>
+            <input type="button" class="pinButton" name="7" value="7" id="7" onclick="addNumber(this)"/>
+            <input type="button" class="pinButton" name="8" value="8" id="8" onclick="addNumber(this)"/>
+            <input type="button" class="pinButton" name="9" value="9" id="9" onclick="addNumber(this)"/>
+            <br>
+            <input type="button" class="pinButton clear" name="clear" value="clear" id="-" onclick="clearForm()"/>
+            <input type="button" class="pinButton" name="0" value="0" id="0" onclick="addNumber(this)"/>
+            <input type="button" class="pinButton enter" name="enter" value="enter" id="+"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>
